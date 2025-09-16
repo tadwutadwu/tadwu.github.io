@@ -3,209 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伦敦六日深度游行程</title>
+    <title>伦敦六日行程</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
-            color: #1f2937;
-        }
-        .container {
-            max-width: 1200px;
         }
         .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            box-sizing: border-box;
-            border-bottom: 4px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .details {
+        .details-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: max-height 0.5s ease-in-out;
+            opacity: 0;
+            padding-top: 0;
         }
-        .details.open {
-            max-height: 1000px; /* Large enough for smooth transition */
+        .details-content.open {
+            max-height: 2000px; /* A large value to allow for transition */
+            opacity: 1;
             padding-top: 1rem;
-        }
-        .summary-content {
-            min-height: 80px; /* Fixed height for consistent card size */
-        }
-        .details-list li {
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        .details-list li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: #3b82f6; /* A consistent blue for bullet points */
-            font-weight: bold;
-            font-size: 1.25rem;
         }
     </style>
 </head>
-<body class="p-6 md:p-10">
+<body class="bg-gray-100 p-4">
 
-    <div class="container mx-auto">
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                伦敦六日深度游
-            </h1>
-            <p class="mt-2 text-lg md:text-xl text-gray-700">
-                从伯明翰到希思罗的专属行程指南
-            </p>
-        </header>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-10">
+            <h1 id="main-title" class="text-4xl font-bold text-gray-800">伦敦六日深度游</h1>
+            <button id="lang-toggle-btn" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition-colors duration-200">English</button>
+        </div>
 
-        <!-- First row: Days 1-3 -->
-        <main class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <!-- Day 1 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-red-600" onclick="toggleDetails(1)">
-                <div class="w-full h-48 bg-red-600 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">1</span>
+            <div class="card bg-orange-400 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day1-title">第一天：10月7日 (星期二)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第一天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">抵达与安顿</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月7日, 星期二</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">从伯明翰抵达伦敦，入住住所，傍晚在住宿附近悠闲漫步。</p>
-                    <div id="details-1" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**从伯明翰抵达伦敦：** 乘坐火车，建议分段购票。</li>
-                            <li>**交通：** 从伦敦尤斯顿火车站乘坐地铁，换乘至利物浦街站，步行至住所。</li>
-                            <li>**傍晚活动：** 步行前往**伦敦塔**和**伦敦塔桥**，沿着泰晤士河岸漫步。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day1-summary">抵达与安顿</p>
+                <div class="details-content mt-4 border-t border-orange-300 pt-4">
+                    <h3 class="font-bold" id="day1-heading1">从伯明翰抵达伦敦</h3>
+                    <p class="text-sm mt-1" id="day1-details1">从伯明翰新街站乘坐火车至伦敦尤斯顿火车站，车程约1.5-2小时。建议提前预订火车票，并可考虑“分段购票”以节省费用。</p>
+                    <h3 class="font-bold mt-3" id="day1-heading2">前往住宿地</h3>
+                    <p class="text-sm mt-1" id="day1-details2">从尤斯顿站搭乘北线（Northern Line）换乘环线（Circle Line）或大都会线（Metropolitan Line），前往利物浦街站（Liverpool Street），步行即可到达位于2 Quaker Street的住所。</p>
+                    <h3 class="font-bold mt-3" id="day1-heading3">轻松的傍晚</h3>
+                    <p class="text-sm mt-1" id="day1-details3">安顿后可步行前往附近的伦敦塔（Tower of London）和伦敦塔桥（Tower Bridge）欣赏外观，并在巴特勒码头（Butler's Wharf）的河畔餐厅享用晚餐，感受伦敦的夜色。</p>
                 </div>
             </div>
 
             <!-- Day 2 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-blue-600" onclick="toggleDetails(2)">
-                <div class="w-full h-48 bg-blue-600 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">2</span>
+            <div class="card bg-blue-500 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day2-title">第二天：10月8日 (星期三)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第二天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">皇家、艺术与公园</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月8日, 星期三</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">参观国家美术馆，观看白金汉宫卫兵换岗仪式，漫步皇家公园。</p>
-                    <div id="details-2" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**上午：国家美术馆（National Gallery）** - 从住所乘坐地铁前往查令十字站。免费开放。</li>
-                            <li>**下午：白金汉宫卫兵换岗** - 从国家美术馆步行前往，观看下午**11:00**的卫兵换岗仪式。</li>
-                            <li>**午后漫步：** 在**圣詹姆斯公园**和**海德公园**轻松散步。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day2-summary">皇家、购物与公园</p>
+                <div class="details-content mt-4 border-t border-blue-400 pt-4">
+                    <h3 class="font-bold" id="day2-heading1">上午：皇家巡礼</h3>
+                    <p class="text-sm mt-1" id="day2-details1">上午11:00观看<span class="font-semibold">白金汉宫卫兵换岗仪式</span>，建议提前半小时到场占据有利位置。仪式后可步行前往<span class="font-semibold">威斯敏斯特教堂</span>和国会大厦，欣赏其宏伟外观，并漫步<span class="font-semibold">圣詹姆斯公园</span>。</p>
+                    <h3 class="font-bold mt-3" id="day2-heading2">下午：艺术与购物</h3>
+                    <p class="text-sm mt-1" id="day2-details2">从威斯敏斯特站乘坐地铁前往南肯辛顿站，参观<span class="font-semibold">维多利亚和阿尔伯特博物馆（V&A）</span>。该馆免费开放，收藏了世界顶级的艺术品和设计。随后，步行前往附近的<span class="font-semibold">哈罗德百货</span>，体验伦敦的奢华购物。</p>
                 </div>
             </div>
 
             <!-- Day 3 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-gray-600" onclick="toggleDetails(3)">
-                <div class="w-full h-48 bg-gray-600 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">3</span>
+            <div class="card bg-green-500 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day3-title">第三天：10月9日 (星期四)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第三天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">文化、学术与戏剧</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月9日, 星期四</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">沉浸在大英博物馆中，下午在书店和剧院区探索，晚上体验西区音乐剧。</p>
-                    <div id="details-3" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**上午：大英博物馆** - 建议提前在线预订免费门票。</li>
-                            <li>**下午：西区深度探索** - 步行前往**LSE**，随后探索**福伊尔斯书店**和**Soho街区**。</li>
-                            <li>**晚上：西区音乐剧体验** - 观看《歌剧魅影》，可利用TodayTix或TKTS寻找折扣票。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day3-summary">文化、学术与戏剧</p>
+                <div class="details-content mt-4 border-t border-green-400 pt-4">
+                    <h3 class="font-bold" id="day3-heading1">上午：大英博物馆</h3>
+                    <p class="text-sm mt-1" id="day3-details1">从住所步行至利物浦街站，搭乘中央线至托特纳姆法院路站。全天精华在于<span class="font-semibold">大英博物馆</span>，其永久藏品免费开放，建议提前在线预订免费门票以节省排队时间。预留3-4小时。</p>
+                    <h3 class="font-bold mt-3" id="day3-heading2">下午：西区漫步</h3>
+                    <p class="text-sm mt-1" id="day3-details2">从大英博物馆步行至<span class="font-semibold">伦敦政治经济学院（LSE）</span>，感受学术氛围。之后在<span class="font-semibold">科芬园</span>和<span class="font-semibold">Soho</span>区自由漫步，探索书店、艺术画廊和特色商店。</p>
+                    <h3 class="font-bold mt-3" id="day3-heading3">夜晚：西区音乐剧</h3>
+                    <p class="text-sm mt-1" id="day3-details3">晚间前往西区剧院，欣赏一场世界级的音乐剧，如《歌剧魅影》。购票可选择官方网站或<span class="font-semibold">TodayTix</span>等应用获取折扣票。</p>
                 </div>
             </div>
-        </main>
 
-        <!-- Second row: Days 4-6 -->
-        <main class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <!-- Day 4 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-red-900" onclick="toggleDetails(4)">
-                <div class="w-full h-48 bg-red-900 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">4</span>
+            <div class="card bg-yellow-500 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day4-title">第四天：10月10日 (星期五)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第四天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">艺术与美食</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月10日, 星期五</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">探访V&A，并在博罗市场享受美食，最后沿着南岸漫步。</p>
-                    <div id="details-4" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**上午：维多利亚和阿尔伯特博物馆（V&A）** - **免费开放**，建议预留3-4小时。</li>
-                            <li>**下午：博罗市场与南岸漫步** - 在博罗市场品尝美食后，沿着泰晤士河南岸步道从Southwark步行至Waterloo。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day4-summary">剑桥一日游</p>
+                <div class="details-content mt-4 border-t border-yellow-400 pt-4">
+                    <h3 class="font-bold" id="day4-heading1">前往剑桥</h3>
+                    <p class="text-sm mt-1" id="day4-details1">从伦敦<span class="font-semibold">国王十字车站</span>搭乘直达火车前往剑桥站，车程约48分钟。周五出行人流相对较少，可享受更舒适的旅程。</p>
+                    <h3 class="font-bold mt-3" id="day4-heading2">探索剑桥</h3>
+                    <p class="text-sm mt-1" id="day4-details2">抵达后，可以步行或乘公交车前往市中心。游览<span class="font-semibold">国王学院</span>和<span class="font-semibold">三一学院</span>，并体验最经典的<span class="font-semibold">撑船（punting）</span>。从河上欣赏叹息桥、数学桥等著名景点，感受浓厚的学术氛围。</p>
                 </div>
             </div>
 
             <!-- Day 5 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-green-600" onclick="toggleDetails(5)">
-                <div class="w-full h-48 bg-green-600 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">5</span>
+            <div class="card bg-red-500 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day5-title">第五天：10月11日 (星期六)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第五天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">城市之外：剑桥一日游</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月11日, 星期六</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">乘火车前往剑桥，游览大学城，体验独特的撑船（punting）。</p>
-                    <div id="details-5" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**上午：前往剑桥** - 从国王十字车站搭乘直达火车。**建议分段购票**。</li>
-                            <li>**下午：探索剑桥** - 游览国王学院和三一学院，并体验**撑船（Punting）**。</li>
-                            <li>**返程：** 傍晚乘坐火车返回伦敦。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day5-summary">艺术、美食与水岸</p>
+                <div class="details-content mt-4 border-t border-red-400 pt-4">
+                    <h3 class="font-bold" id="day5-heading1">上午：国家美术馆</h3>
+                    <p class="text-sm mt-1" id="day5-details1">从利物浦街站搭乘中央线或环线至<span class="font-semibold">查令十字站</span>，步行即可到达。留足3小时，尽情欣赏<span class="font-semibold">国家美术馆</span>的杰作，这里收藏了从中世纪到20世纪的欧洲绘画。</p>
+                    <h3 class="font-bold mt-3" id="day5-heading2">下午：美食与漫步</h3>
+                    <p class="text-sm mt-1" id="day5-details2">从国家美术馆步行至查令十字站，乘坐朱比利线至<span class="font-semibold">伦敦桥站</span>。周六的<span class="font-semibold">博罗市场</span>最为热闹，可品尝各式美食。之后沿着泰晤士河南岸漫步，经过<span class="font-semibold">莎士比亚环球剧场</span>和<span class="font-semibold">泰特现代艺术馆</span>，感受伦敦的艺术与文化气息。</p>
                 </div>
             </div>
 
             <!-- Day 6 -->
-            <div class="card bg-white rounded-2xl shadow-lg border-gray-400" onclick="toggleDetails(6)">
-                <div class="w-full h-48 bg-gray-400 rounded-t-2xl flex items-center justify-center">
-                    <span class="text-white text-3xl font-bold">6</span>
+            <div class="card bg-purple-500 text-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold" id="day6-title">第六天：10月12日 (星期日)</h2>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
                 </div>
-                <div class="p-6">
-                    <h2 class="text-xl md:text-2xl font-bold text-gray-900 leading-snug">第六天</h2>
-                    <h3 class="mt-1 text-lg font-semibold text-gray-700">市场与启程</h3>
-                    <p class="mt-1 text-sm text-gray-500">10月12日, 星期日</p>
-                    <p class="mt-3 text-sm text-gray-500 summary-content">探访布里克巷市集，根据时间安排前往希思罗机场。</p>
-                    <div id="details-6" class="details">
-                        <ul class="details-list mt-2 space-y-3 text-gray-700">
-                            <li>**上午：布里克巷（Brick Lane）市集** - 从住所步行即可到达，周日最为热闹。</li>
-                            <li>**下午：前往希思罗机场** - 您的航班**CX250**于18:20起飞。建议在**15:00前**从住所出发，乘坐**伊丽莎白线**直达机场。</li>
-                        </ul>
-                    </div>
+                <p class="mt-2 text-base font-medium" id="day6-summary">市场与启程</p>
+                <div class="details-content mt-4 border-t border-purple-400 pt-4">
+                    <h3 class="font-bold" id="day6-heading1">上午：布里克巷市集</h3>
+                    <p class="text-sm mt-1" id="day6-details1">从住所步行至<span class="font-semibold">布里克巷（Brick Lane）</span>市集，这里是周日最热闹的地方，可以淘到独特的复古服装、独立设计和街头美食。建议在午餐前结束，为下午的行程留出充足时间。</p>
+                    <h3 class="font-bold mt-3" id="day6-heading2">下午：前往机场</h3>
+                    <p class="text-sm mt-1" id="day6-details2">考虑到<span class="font-semibold">CX250航班于18:20</span>从希思罗机场T3航站楼起飞，请在<span class="font-semibold">15:00前</span>从住所出发。从利物浦街站乘坐<span class="font-semibold">伊丽莎白线（Elizabeth Line）</span>可直达希思罗机场，车程约35分钟，方便快捷。</p>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 
     <script>
-        function toggleDetails(day) {
-            const detailsElement = document.getElementById(`details-${day}`);
-            const isExpanded = detailsElement.classList.contains('open');
-            
-            // Close all other details sections
-            document.querySelectorAll('.details.open').forEach(el => {
-                if (el.id !== `details-${day}`) {
-                    el.classList.remove('open');
-                }
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const details = card.querySelector('.details-content');
+                    const arrow = card.querySelector('svg');
+
+                    details.classList.toggle('open');
+                    if (details.classList.contains('open')) {
+                        arrow.style.transform = 'rotate(180deg)';
+                    } else {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                });
             });
 
-            // Toggle the clicked details section
-            if (!isExpanded) {
-                detailsElement.classList.add('open');
-            }
-        }
-    </script>
+            const langToggleBtn = document.getElementById('lang-toggle-btn');
+            const langContent = {
+                'zh': {
+                    'main-title': '伦敦六日深度游',
+                    'lang-btn': 'English',
+                    'day1-title': '第一天：10月7日 (星期二)',
+                    'day1-summary': '抵达与安顿',
+                    'day1-heading1': '从伯明翰抵达伦敦',
+                    'day1-details1': '从伯明翰新街站乘坐火车至伦敦尤斯顿火车站，车程约1.5-2小时。建议提前预订火车票，并可考虑“分段购票”以节省费用。',
+                    'day1-heading2': '前往住宿地',
+                    'day1-details2': '从尤斯顿站搭乘北线（Northern Line）换乘环线（Circle Line）或大都会线（Metropolitan Line），前往利物浦街站（Liverpool Street），步行即可到达位于2 Quaker Street的住所。',
+                    'day1-heading3': '轻松的傍晚',
+                    'day1-details3': '安顿后可步行前往附近的伦敦塔（Tower of London）和伦敦塔桥（Tower Bridge）欣赏外观，并在巴特勒码头（Butler\'s Wharf）的河畔餐厅享用晚餐，感受伦敦的夜色。',
 
+                    'day2-title': '第二天：10月8日 (星期三)',
+                    'day2-summary': '皇家、购物与公园',
+                    'day2-heading1': '上午：皇家巡礼',
+                    'day2-details1': '上午11:00观看<span class="font-semibold">白金汉宫卫兵换岗仪式</span>，建议提前半小时到场占据有利位置。仪式后可步行前往<span class="font-semibold">威斯敏斯特教堂</span>和国会大厦，欣赏其宏伟外观，并漫步<span class="font-semibold">圣詹姆斯公园</span>。',
+                    'day2-heading2': '下午：艺术与购物',
+                    'day2-details2': '从威斯敏斯特站乘坐地铁前往南肯辛顿站，参观<span class="font-semibold">维多利亚和阿尔伯特博物馆（V&A）</span>。该馆免费开放，收藏了世界顶级的艺术品和设计。随后，步行前往附近的<span class="font-semibold">哈罗德百货</span>，体验伦敦的奢华购物。',
+
+                    'day3-title': '第三天：10月9日 (星期四)',
+                    'day3-summary': '文化、学术与戏剧',
+                    'day3-heading1': '上午：大英博物馆',
+                    'day3-details1': '从住所步行至利物浦街站，搭乘中央线至托特纳姆法院路站。全天精华在于<span class="font-semibold">大英博物馆</span>，其永久藏品免费开放，建议提前在线预订免费门票以节省排队时间。预留3-4小时。',
+                    'day3-heading2': '下午：西区漫步',
+                    'day3-details2': '从大英博物馆步行至<span class="font-semibold">伦敦政治经济学院（LSE）</span>，感受学术氛围。之后在<span class="font-semibold">科芬园</span>和<span class="font-semibold">Soho</span>区自由漫步，探索书店、艺术画廊和特色商店。',
+                    'day3-heading3': '夜晚：西区音乐剧',
+                    'day3-details3': '晚间前往西区剧院，欣赏一场世界级的音乐剧，如《歌剧魅影》。购票可选择官方网站或<span class="font-semibold">TodayTix</span>等应用获取折扣票。',
+                    
+                    'day4-title': '第四天：10月10日 (星期五)',
+                    'day4-summary': '剑桥一日游',
+                    'day4-heading1': '前往剑桥',
+                    'day4-details1': '从伦敦<span class="font-semibold">国王十字车站</span>搭乘直达火车前往剑桥站，车程约48分钟。周五出行人流相对较少，可享受更舒适的旅程。',
+                    'day4-heading2': '探索剑桥',
+                    'day4-details2': '抵达后，可以步行或乘公交车前往市中心。游览<span class="font-semibold">国王学院</span>和<span class="font-semibold">三一学院</span>，并体验最经典的<span class="font-semibold">撑船（punting）</span>。从河上欣赏叹息桥、数学桥等著名景点，感受浓厚的学术氛围。',
+
+                    'day5-title': '第五天：10月11日 (星期六)',
+                    'day5-summary': '艺术、美食与水岸',
+                    'day5-heading1': '上午：国家美术馆',
+                    'day5-details1': '从利物浦街站搭乘中央线或环线至<span class="font-semibold">查令十字站</span>，步行即可到达。留足3小时，尽情欣赏<span class="font-semibold">国家美术馆</span>的杰作，这里收藏了从中世纪到20世纪的欧洲绘画。',
+                    'day5-heading2': '下午：美食与漫步',
+                    'day5-details2': '从国家美术馆步行至查令十字站，乘坐朱比利线至<span class="font-semibold">伦敦桥站</span>。周六的<span class="font-semibold">博罗市场</span>最为热闹，可品尝各式美食。之后沿着泰晤士河南岸漫步，经过<span class="font-semibold">莎士比亚环球剧场</span>和<span class="font-semibold">泰特现代艺术馆</span>，感受伦敦的艺术与文化气息。',
+
+                    'day6-title': '第六天：10月12日 (星期日)',
+                    'day6-summary': '市场与启程',
+                    'day6-heading1': '上午：布里克巷市集',
+                    'day6-details1': '从住所步行至<span class="font-semibold">布里克巷（Brick Lane）</span>市集，这里是周日最热闹的地方，可以淘到独特的复古服装、独立设计和街头美食。建议在午餐前结束，为下午的行程留出充足时间。',
+                    'day6-heading2': '下午：前往机场',
+                    'day6-details2': '考虑到<span class="font-semibold">CX250航班于18:20</span>从希思罗机场T3航站楼起飞，请在<span class="font-semibold">15:00前</span>从住所出发。从利物浦街站乘坐<span class="font-semibold">伊丽莎白线（Elizabeth Line）</span>可直达希思罗机场，车程约35分钟，方便快捷。',
+                },
+                'en': {
+                    'main-title': 'London 6-Day Itinerary',
+                    'lang-btn': '中文',
+                    'day1-title': 'Day 1: October 7th (Tuesday)',
+                    'day1-summary': 'Arrival and Settlement',
+                    'day1-heading1': 'Arrive in London from Birmingham',
+                    'day1-details1': 'Take a train from Birmingham New Street station to London Euston station, a journey of about 1.5-2 hours. It is recommended to book train tickets in advance and consider "Split Ticketing" to save on costs.',
+                    'day1-heading2': 'Travel to Accommodation',
+                    'day1-details2': 'From Euston station, take the Northern Line, transfer to the Circle Line or Metropolitan Line, and head to Liverpool Street station. Your accommodation at 2 Quaker Street is a short walk away.',
+                    'day1-heading3': 'Relaxing Evening',
+                    'day1-details3': 'After settling in, you can walk to the nearby Tower of London and Tower Bridge to admire their exteriors. Enjoy dinner at a riverside restaurant in Butler\'s Wharf and soak in the London night scene.',
+
+                    'day2-title': 'Day 2: October 8th (Wednesday)',
+                    'day2-summary': 'Royalty, Shopping & Parks',
+                    'day2-heading1': 'Morning: Royal Tour',
+                    'day2-details1': 'Watch the <span class="font-semibold">Changing of the Guard ceremony at Buckingham Palace</span> at 11:00 AM. Arrive 30 minutes early for a good spot. Afterward, walk to see the magnificent exteriors of <span class="font-semibold">Westminster Abbey</span> and the Houses of Parliament, and stroll through <span class="font-semibold">St. James\'s Park</span>.',
+                    'day2-heading2': 'Afternoon: Art & Shopping',
+                    'day2-details2': 'Take the tube from Westminster station to South Kensington station. Visit the <span class="font-semibold">Victoria and Albert Museum (V&A)</span>, which is free to enter and houses world-class art and design collections. Afterward, walk to the nearby <span class="font-semibold">Harrods</span> for a luxury shopping experience.',
+
+                    'day3-title': 'Day 3: October 9th (Thursday)',
+                    'day3-summary': 'Culture, Academia & Theatre',
+                    'day3-heading1': 'Morning: British Museum',
+                    'day3-details1': 'Walk from your accommodation to Liverpool Street station and take the Central Line to Tottenham Court Road. Spend the morning at the <span class="font-semibold">British Museum</span>, which is free to enter. It is recommended to book a timed ticket online to save time. Allow 3-4 hours.',
+                    'day3-heading2': 'Afternoon: West End Walk',
+                    'day3-details2': 'Walk from the British Museum to the <span class="font-semibold">London School of Economics (LSE)</span> to feel the academic atmosphere. Afterward, wander through <span class="font-semibold">Covent Garden</span> and <span class="font-semibold">Soho</span>, exploring unique shops, art galleries, and cafes.',
+                    'day3-heading3': 'Evening: West End Musical',
+                    'day3-details3': 'In the evening, head to a West End theatre to watch a world-class musical, such as "The Phantom of the Opera." Tickets can be purchased from official websites or apps like <span class="font-semibold">TodayTix</span> for potential discounts.',
+
+                    'day4-title': 'Day 4: October 10th (Friday)',
+                    'day4-summary': 'Cambridge Day Trip',
+                    'day4-heading1': 'Travel to Cambridge',
+                    'day4-details1': 'Take a direct train from London <span class="font-semibold">King\'s Cross station</span> to Cambridge station, a journey of about 48 minutes. Traveling on a Friday means fewer crowds for a more comfortable trip.',
+                    'day4-heading2': 'Explore Cambridge',
+                    'day4-details2': 'Upon arrival, you can walk or take a bus to the city center. Visit the famous <span class="font-semibold">King\'s College</span> and <span class="font-semibold">Trinity College</span>. Don\'t miss the classic <span class="font-semibold">punting</span> experience on the River Cam, which offers unique views of iconic sights like the Bridge of Sighs and Mathematical Bridge.',
+
+                    'day5-title': 'Day 5: October 11th (Saturday)',
+                    'day5-summary': 'Art, Food & Riverside',
+                    'day5-heading1': 'Morning: National Gallery',
+                    'day5-details1': 'Take the Central or Circle Line from Liverpool Street station to <span class="font-semibold">Charing Cross station</span>. Allow at least 3 hours to fully appreciate the masterpieces at the <span class="font-semibold">National Gallery</span>, which houses a collection of European paintings from the Middle Ages to the 20th century.',
+                    'day5-heading2': 'Afternoon: Food & Walk',
+                    'day5-details2': 'From the National Gallery, walk to Charing Cross station and take the Jubilee Line to <span class="font-semibold">London Bridge station</span>. <span class="font-semibold">Borough Market</span> is busiest on Saturday, making it the perfect time to sample a variety of street food. Afterward, stroll along the South Bank of the Thames, passing the <span class="font-semibold">Shakespeare\'s Globe</span> and the <span class="font-semibold">Tate Modern</span>.',
+
+                    'day6-title': 'Day 6: October 12th (Sunday)',
+                    'day6-summary': 'Market & Departure',
+                    'day6-heading1': 'Morning: Brick Lane Market',
+                    'day6-details1': 'Walk to the <span class="font-semibold">Brick Lane Market</span>, which is at its most vibrant on Sunday. You can find vintage clothing, independent designs, and a wide variety of street food. It\'s best to finish before lunch to allow plenty of time for your afternoon plans.',
+                    'day6-heading2': 'Afternoon: Travel to Airport',
+                    'day6-details2': 'Given that flight <span class="font-semibold">CX250 departs at 18:20</span> from Heathrow Terminal 3, please leave your accommodation before <span class="font-semibold">3:00 PM</span>. The most convenient way to the airport is to take the <span class="font-semibold">Elizabeth Line</span> directly from Liverpool Street station, which takes approximately 35 minutes.',
+                }
+            };
+
+            let currentLang = 'zh';
+
+            const updateTextContent = (lang) => {
+                document.getElementById('main-title').textContent = langContent[lang]['main-title'];
+                document.getElementById('lang-toggle-btn').textContent = langContent[lang]['lang-btn'];
+                
+                for (let i = 1; i <= 6; i++) {
+                    document.getElementById(`day${i}-title`).textContent = langContent[lang][`day${i}-title`];
+                    document.getElementById(`day${i}-summary`).textContent = langContent[lang][`day${i}-summary`];
+                    document.getElementById(`day${i}-heading1`).textContent = langContent[lang][`day${i}-heading1`];
+                    document.getElementById(`day${i}-details1`).innerHTML = langContent[lang][`day${i}-details1`];
+                    if (langContent[lang][`day${i}-heading2`]) {
+                        document.getElementById(`day${i}-heading2`).textContent = langContent[lang][`day${i}-heading2`];
+                        document.getElementById(`day${i}-details2`).innerHTML = langContent[lang][`day${i}-details2`];
+                    }
+                    if (langContent[lang][`day${i}-heading3`]) {
+                        document.getElementById(`day${i}-heading3`).textContent = langContent[lang][`day${i}-heading3`];
+                        document.getElementById(`day${i}-details3`).innerHTML = langContent[lang][`day${i}-details3`];
+                    }
+                }
+            };
+
+            langToggleBtn.addEventListener('click', () => {
+                if (currentLang === 'zh') {
+                    currentLang = 'en';
+                } else {
+                    currentLang = 'zh';
+                }
+                updateTextContent(currentLang);
+            });
+
+            // Set initial content
+            updateTextContent(currentLang);
+        });
+    </script>
 </body>
 </html>
