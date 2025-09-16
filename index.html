@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伦敦六日行程</title>
+    <title>伦敦无价之旅</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,9 +38,30 @@
 <body class="bg-gray-100 p-4">
 
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="flex justify-between items-center mb-10">
-            <h1 id="main-title" class="text-4xl font-bold text-gray-800">伦敦六日深度游</h1>
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8">
+            <h1 id="main-title" class="text-4xl font-bold text-gray-800 mb-4 sm:mb-0">伦敦无价之旅</h1>
             <button id="lang-toggle-btn" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold hover:bg-gray-300 transition-colors duration-200">English</button>
+        </div>
+
+        <!-- Currency Converter Section -->
+        <div class="grid grid-cols-1 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <h2 id="converter-title" class="text-2xl font-semibold text-gray-800 mb-4">货币转换器</h2>
+                <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="relative w-full sm:w-1/2">
+                        <label for="gbp-input" id="gbp-label" class="sr-only">英镑（GBP）</label>
+                        <input type="number" id="gbp-input" placeholder="输入英镑金额..." class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800">
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 font-bold">GBP</span>
+                    </div>
+                    <button id="convert-btn" class="w-full sm:w-auto px-6 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors duration-200">计算</button>
+                    <div class="relative w-full sm:w-1/2">
+                        <label for="cny-output" id="cny-label" class="sr-only">人民币（CNY）</label>
+                        <input type="text" id="cny-output" readonly placeholder="人民币价格" class="w-full px-4 py-2 border rounded-lg bg-gray-100 text-gray-800 cursor-not-allowed">
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 font-bold">CNY</span>
+                    </div>
+                </div>
+                <p id="exchange-rate-info" class="text-sm text-gray-500 mt-4 text-center">汇率信息：加载中...</p>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -53,7 +74,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day1-summary">抵达与安顿</p>
-                <div class="details-content mt-4 border-t border-orange-300 pt-4">
+                <div class="details-content mt-4 border-t border-orange-300">
                     <h3 class="font-bold" id="day1-heading1">从伯明翰抵达伦敦</h3>
                     <p class="text-sm mt-1" id="day1-details1">从伯明翰新街站乘坐火车至伦敦尤斯顿火车站，车程约1.5-2小时。建议提前预订火车票，并可考虑“分段购票”以节省费用。</p>
                     <h3 class="font-bold mt-3" id="day1-heading2">前往住宿地</h3>
@@ -72,7 +93,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day2-summary">皇家、购物与公园</p>
-                <div class="details-content mt-4 border-t border-blue-400 pt-4">
+                <div class="details-content mt-4 border-t border-blue-400">
                     <h3 class="font-bold" id="day2-heading1">上午：皇家巡礼</h3>
                     <p class="text-sm mt-1" id="day2-details1">上午11:00观看<span class="font-semibold">白金汉宫卫兵换岗仪式</span>，建议提前半小时到场占据有利位置。仪式后可步行前往<span class="font-semibold">威斯敏斯特教堂</span>和国会大厦，欣赏其宏伟外观，并漫步<span class="font-semibold">圣詹姆斯公园</span>。</p>
                     <h3 class="font-bold mt-3" id="day2-heading2">下午：艺术与购物</h3>
@@ -89,7 +110,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day3-summary">文化、学术与戏剧</p>
-                <div class="details-content mt-4 border-t border-green-400 pt-4">
+                <div class="details-content mt-4 border-t border-green-400">
                     <h3 class="font-bold" id="day3-heading1">上午：大英博物馆</h3>
                     <p class="text-sm mt-1" id="day3-details1">从住所步行至利物浦街站，搭乘中央线至托特纳姆法院路站。全天精华在于<span class="font-semibold">大英博物馆</span>，其永久藏品免费开放，建议提前在线预订免费门票以节省排队时间。预留3-4小时。</p>
                     <h3 class="font-bold mt-3" id="day3-heading2">下午：西区漫步</h3>
@@ -108,7 +129,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day4-summary">剑桥一日游</p>
-                <div class="details-content mt-4 border-t border-yellow-400 pt-4">
+                <div class="details-content mt-4 border-t border-yellow-400">
                     <h3 class="font-bold" id="day4-heading1">前往剑桥</h3>
                     <p class="text-sm mt-1" id="day4-details1">从伦敦<span class="font-semibold">国王十字车站</span>搭乘直达火车前往剑桥站，车程约48分钟。周五出行人流相对较少，可享受更舒适的旅程。</p>
                     <h3 class="font-bold mt-3" id="day4-heading2">探索剑桥</h3>
@@ -125,7 +146,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day5-summary">艺术、美食与水岸</p>
-                <div class="details-content mt-4 border-t border-red-400 pt-4">
+                <div class="details-content mt-4 border-t border-red-400">
                     <h3 class="font-bold" id="day5-heading1">上午：国家美术馆</h3>
                     <p class="text-sm mt-1" id="day5-details1">从利物浦街站搭乘中央线或环线至<span class="font-semibold">查令十字站</span>，步行即可到达。留足3小时，尽情欣赏<span class="font-semibold">国家美术馆</span>的杰作，这里收藏了从中世纪到20世纪的欧洲绘画。</p>
                     <h3 class="font-bold mt-3" id="day5-heading2">下午：美食与漫步</h3>
@@ -142,7 +163,7 @@
                     </svg>
                 </div>
                 <p class="mt-2 text-base font-medium" id="day6-summary">市场与启程</p>
-                <div class="details-content mt-4 border-t border-purple-400 pt-4">
+                <div class="details-content mt-4 border-t border-purple-400">
                     <h3 class="font-bold" id="day6-heading1">上午：布里克巷市集</h3>
                     <p class="text-sm mt-1" id="day6-details1">从住所步行至<span class="font-semibold">布里克巷（Brick Lane）</span>市集，这里是周日最热闹的地方，可以淘到独特的复古服装、独立设计和街头美食。建议在午餐前结束，为下午的行程留出充足时间。</p>
                     <h3 class="font-bold mt-3" id="day6-heading2">下午：前往机场</h3>
@@ -170,10 +191,57 @@
             });
 
             const langToggleBtn = document.getElementById('lang-toggle-btn');
+            const gbpInput = document.getElementById('gbp-input');
+            const convertBtn = document.getElementById('convert-btn');
+            const cnyOutput = document.getElementById('cny-output');
+            const exchangeRateInfo = document.getElementById('exchange-rate-info');
+
+            let EXCHANGE_RATE = null;
+
+            const fetchExchangeRate = async () => {
+                const API_URL = 'https://api.exchangerate-api.com/v4/latest/GBP';
+                exchangeRateInfo.textContent = '汇率信息：加载中...';
+                try {
+                    const response = await fetch(API_URL);
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    const data = await response.json();
+                    EXCHANGE_RATE = data.rates.CNY;
+                    updateTextContent(currentLang); // Update text after fetch
+                    convertBtn.disabled = false;
+                } catch (error) {
+                    console.error('Failed to fetch exchange rate:', error);
+                    exchangeRateInfo.textContent = '汇率信息：加载失败，请重试';
+                    convertBtn.disabled = true;
+                }
+            };
+            
+            convertBtn.addEventListener('click', () => {
+                if (EXCHANGE_RATE) {
+                    const gbpAmount = parseFloat(gbpInput.value);
+                    if (!isNaN(gbpAmount)) {
+                        const cnyAmount = (gbpAmount * EXCHANGE_RATE).toFixed(2);
+                        cnyOutput.value = cnyAmount;
+                    } else {
+                        cnyOutput.value = '';
+                    }
+                }
+            });
+
             const langContent = {
                 'zh': {
-                    'main-title': '伦敦六日深度游',
+                    'main-title': '伦敦无价之旅',
                     'lang-btn': 'English',
+                    'converter-title': '货币转换器',
+                    'gbp-label': '英镑（GBP）',
+                    'gbp-placeholder': '输入英镑金额...',
+                    'convert-btn': '计算',
+                    'cny-label': '人民币（CNY）',
+                    'cny-placeholder': '人民币价格',
+                    'exchange-rate-info-loading': '汇率信息：加载中...',
+                    'exchange-rate-info-error': '汇率信息：加载失败，请重试',
+                    
                     'day1-title': '第一天：10月7日 (星期二)',
                     'day1-summary': '抵达与安顿',
                     'day1-heading1': '从伯明翰抵达伦敦',
@@ -221,8 +289,17 @@
                     'day6-details2': '考虑到<span class="font-semibold">CX250航班于18:20</span>从希思罗机场T3航站楼起飞，请在<span class="font-semibold">15:00前</span>从住所出发。从利物浦街站乘坐<span class="font-semibold">伊丽莎白线（Elizabeth Line）</span>可直达希思罗机场，车程约35分钟，方便快捷。',
                 },
                 'en': {
-                    'main-title': 'London 6-Day Itinerary',
+                    'main-title': 'Priceless London Journey',
                     'lang-btn': '中文',
+                    'converter-title': 'Currency Converter',
+                    'gbp-label': 'British Pounds (GBP)',
+                    'gbp-placeholder': 'Enter amount in GBP...',
+                    'convert-btn': 'Convert',
+                    'cny-label': 'Chinese Yuan (CNY)',
+                    'cny-placeholder': 'Price in CNY',
+                    'exchange-rate-info-loading': 'Exchange Rate: Loading...',
+                    'exchange-rate-info-error': 'Exchange Rate: Failed to load, please retry',
+                    
                     'day1-title': 'Day 1: October 7th (Tuesday)',
                     'day1-summary': 'Arrival and Settlement',
                     'day1-heading1': 'Arrive in London from Birmingham',
@@ -243,7 +320,7 @@
                     'day3-summary': 'Culture, Academia & Theatre',
                     'day3-heading1': 'Morning: British Museum',
                     'day3-details1': 'Walk from your accommodation to Liverpool Street station and take the Central Line to Tottenham Court Road. Spend the morning at the <span class="font-semibold">British Museum</span>, which is free to enter. It is recommended to book a timed ticket online to save time. Allow 3-4 hours.',
-                    'day3-heading2': 'Afternoon: West End Walk',
+                    'day3-heading2': '下午：西区漫步',
                     'day3-details2': 'Walk from the British Museum to the <span class="font-semibold">London School of Economics (LSE)</span> to feel the academic atmosphere. Afterward, wander through <span class="font-semibold">Covent Garden</span> and <span class="font-semibold">Soho</span>, exploring unique shops, art galleries, and cafes.',
                     'day3-heading3': 'Evening: West End Musical',
                     'day3-details3': 'In the evening, head to a West End theatre to watch a world-class musical, such as "The Phantom of the Opera." Tickets can be purchased from official websites or apps like <span class="font-semibold">TodayTix</span> for potential discounts.',
@@ -259,7 +336,7 @@
                     'day5-summary': 'Art, Food & Riverside',
                     'day5-heading1': 'Morning: National Gallery',
                     'day5-details1': 'Take the Central or Circle Line from Liverpool Street station to <span class="font-semibold">Charing Cross station</span>. Allow at least 3 hours to fully appreciate the masterpieces at the <span class="font-semibold">National Gallery</span>, which houses a collection of European paintings from the Middle Ages to the 20th century.',
-                    'day5-heading2': 'Afternoon: Food & Walk',
+                    'day5-heading2': '下午：美食与漫步',
                     'day5-details2': 'From the National Gallery, walk to Charing Cross station and take the Jubilee Line to <span class="font-semibold">London Bridge station</span>. <span class="font-semibold">Borough Market</span> is busiest on Saturday, making it the perfect time to sample a variety of street food. Afterward, stroll along the South Bank of the Thames, passing the <span class="font-semibold">Shakespeare\'s Globe</span> and the <span class="font-semibold">Tate Modern</span>.',
 
                     'day6-title': 'Day 6: October 12th (Sunday)',
@@ -276,17 +353,27 @@
             const updateTextContent = (lang) => {
                 document.getElementById('main-title').textContent = langContent[lang]['main-title'];
                 document.getElementById('lang-toggle-btn').textContent = langContent[lang]['lang-btn'];
+                document.getElementById('converter-title').textContent = langContent[lang]['converter-title'];
+                document.getElementById('gbp-input').placeholder = langContent[lang]['gbp-placeholder'];
+                document.getElementById('convert-btn').textContent = langContent[lang]['convert-btn'];
+                document.getElementById('cny-output').placeholder = langContent[lang]['cny-placeholder'];
                 
+                if(EXCHANGE_RATE) {
+                     document.getElementById('exchange-rate-info').textContent = lang === 'zh' ? `汇率信息：1 GBP ≈ ${EXCHANGE_RATE.toFixed(4)} CNY` : `Exchange Rate: 1 GBP ≈ ${EXCHANGE_RATE.toFixed(4)} CNY`;
+                } else {
+                     document.getElementById('exchange-rate-info').textContent = langContent[lang]['exchange-rate-info-loading'];
+                }
+
                 for (let i = 1; i <= 6; i++) {
                     document.getElementById(`day${i}-title`).textContent = langContent[lang][`day${i}-title`];
                     document.getElementById(`day${i}-summary`).textContent = langContent[lang][`day${i}-summary`];
                     document.getElementById(`day${i}-heading1`).textContent = langContent[lang][`day${i}-heading1`];
                     document.getElementById(`day${i}-details1`).innerHTML = langContent[lang][`day${i}-details1`];
-                    if (langContent[lang][`day${i}-heading2`]) {
+                    if (document.getElementById(`day${i}-heading2`)) {
                         document.getElementById(`day${i}-heading2`).textContent = langContent[lang][`day${i}-heading2`];
                         document.getElementById(`day${i}-details2`).innerHTML = langContent[lang][`day${i}-details2`];
                     }
-                    if (langContent[lang][`day${i}-heading3`]) {
+                    if (document.getElementById(`day${i}-heading3`)) {
                         document.getElementById(`day${i}-heading3`).textContent = langContent[lang][`day${i}-heading3`];
                         document.getElementById(`day${i}-details3`).innerHTML = langContent[lang][`day${i}-details3`];
                     }
@@ -302,8 +389,10 @@
                 updateTextContent(currentLang);
             });
 
-            // Set initial content
+            // Set initial content and fetch data
             updateTextContent(currentLang);
+            fetchExchangeRate();
+            
         });
     </script>
 </body>
